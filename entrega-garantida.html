@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entrega Garantida</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .opcao {
+      border: 1.5px solid #ccc;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: border 0.2s ease;
+      cursor: pointer;
+    }
+
+    .opcao.ativa {
+      border-color: #7300e6;
+    }
+
+    .emoji {
+      font-size: 32px;
+      margin-right: 14px;
+      flex-shrink: 0;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .titulo {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 2px;
+      color: #000;
+    }
+
+    .descricao {
+      font-size: 14px;
+      color: #444;
+      white-space: pre-line;
+    }
+
+    .link-endereco {
+      color: #7300e6;
+      font-size: 13px;
+      margin-top: 6px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .botao-confirmar {
+      margin-top: 30px;
+      background-color: #ff5a00;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 30px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .botao-confirmar:hover {
+      background-color: #e64d00;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Como você quer receber o produto?</h2>
+
+  <!-- Entrega pela OLX -->
+  <div class="opcao ativa" onclick="selecionar('olx')">
+    <div class="emoji">📦</div>
+    <div class="info">
+      <div class="titulo">Entrega pela OLX</div>
+      <div class="descricao" id="endereco"></div>
+      <a class="link-endereco" href="endereco.html">Mudar endereço</a>
+    </div>
+  </div>
+
+  <!-- Retirada com vendedor -->
+  <div class="opcao" onclick="selecionar('retirada')">
+    <div class="emoji">🤝</div>
+    <div class="info">
+      <div class="titulo">Retirar com vendedor</div>
+      <div class="descricao">Combine diretamente com ele através do chat da OLX.</div>
+    </div>
+  </div>
+
+  <button class="botao-confirmar" onclick="confirmarEntrega()">Confirmar</button>
+
+  <script>
+    const dados = JSON.parse(localStorage.getItem('endereco'));
+    if (dados) {
+      document.getElementById('endereco').innerText = 
+        `${dados.nome}\n${dados.rua}, ${dados.numero}${dados.complemento ? ' - ' + dados.complemento : ''}\n${dados.cidade} - ${dados.estado}\n${dados.referencia || ''}`;
+    }
+
+    let metodoSelecionado = 'olx';
+
+    function selecionar(metodo) {
+      metodoSelecionado = metodo;
+      document.querySelectorAll('.opcao').forEach(el => el.classList.remove('ativa'));
+      if (metodo === 'olx') {
+        document.querySelectorAll('.opcao')[0].classList.add('ativa');
+      } else {
+        document.querySelectorAll('.opcao')[1].classList.add('ativa');
+      }
+    }
+
+    function confirmarEntrega() {
+      localStorage.setItem('tipoEntrega', metodoSelecionado);
+      window.location.href = 'resumo-compra-garantida.html';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resumo da Compra</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .aviso-box {
+      background: #e7d8ff;
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 15px;
+      color: #4c1d95;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .logos img {
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .mensagem {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .icone {
+      font-size: 28px;
+      margin-top: 3px;
+    }
+
+    .mensagem strong {
+      font-weight: bold;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .produto {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .produto img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 16px;
+    }
+
+    .produto-info {
+      flex: 1;
+    }
+
+    .produto-info h3 {
+      font-size: 16px;
+      margin: 0 0 8px 0;
+    }
+
+    .produto-info p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .info-extra {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .info-extra strong {
+      color: #000;
+    }
+
+    .valores {
+      border-top: 1px solid #ddd;
+      padding-top: 16px;
+      font-size: 15px;
+    }
+
+    .linha {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .botoes {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .botao {
+      flex: 1;
+      padding: 14px;
+      font-size: 15px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .voltar {
+      background-color: #e0e0e0;
+      color: #000;
+    }
+
+    .finalizar {
+      background-color: #ff5a00;
+      color: #fff;
+    }
+
+    .finalizar:hover {
+      background-color: #e64d00;
+    }
+  </style>
+</head>
+<body>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+  <img src="https://i.postimg.cc/SswyzD2J/Background-Eraser-20250731-130123999.png" alt="Ícone Pagamento" style="height: 90px;" />
+  <span style="font-size: 20px; font-weight: bold;">pagamento</span>
+</div>
+  <div class="aviso-box">
+  <div class="logos">
+    <img src="https://i.postimg.cc/Mp87MKdx/Picsart-25-07-28-02-38-23-400.jpg" alt="Imagem de topo" style="width: 100%; height: auto; border-radius: 12px; object-fit: cover;" />
+  </div>
+  <div class="mensagem">
+    <div class="icone">⚠️</div>
+    <div>
+        Não pedimos comprovante do Pix e nem enviamos por e-mail.<br>
+        A <strong>OLX</strong>, em parceria com a <strong>InfinitePay</strong>, cuida do pagamento até você receber seu produto!
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+  <h2>Revise seu pedido</h2>
+
+  <div class="produto">
+    <img id="fotoProduto" src="https://i.postimg.cc/gJN310Lg/20250728-170248.jpg" alt="Foto do produto" />
+    <div class="produto-info">
+      <h3 id="produtoNome">PlayStation 5 825GB</h3>
+      <p id="vendedorNome">Vendedor: Marcus Vi***  • CPF  ***.***824***.</p>
+    </div>
+  </div>
+
+    <div class="info-extra">
+      <p><strong>Entrega:</strong> <span id="entregaTipo">Carregando...</span></p>
+      <p><strong>Endereço:</strong> <span id="enderecoEntrega">Carregando...</span></p>
+    </div>
+
+    <div class="valores">
+      <div class="linha">
+        <span>Produto</span>
+        <span>R$ 1.550,00</span>
+      </div>
+      <div class="linha">
+        <span>Entrega + Garantia OlxPay</span>
+        <span id="valorEntrega">R$ 200,00</span>
+      </div>
+      <div class="linha total">
+        <span>Total</span>
+        <span>R$ 1.750,00</span>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button class="botao voltar" onclick="history.back()">Voltar</button>
+      <a href="https://invoice.infinitepay.io/marcus-vinicius-fontes-/1V2fkjeHvH" target="_blank" class="botao finalizar">Finalizar compra</a>
+      </div> <!-- fechamento da div.botoes -->
+  </div>
+
+ <script>
+  const endereco = JSON.parse(localStorage.getItem('endereco'));
+  const entrega = localStorage.getItem('tipoEntrega');
+  const foto = localStorage.getItem('fotoPrincipal');
+  const produtoNome = localStorage.getItem('produtoNome');
+
+
+  if (foto) {
+    document.getElementById('fotoProduto').src = foto;
+  }
+
+  if (produtoNome) {
+    document.getElementById('produtoNome').innerText = produtoNome;
+  }
+
+  if (entrega) {
+    document.getElementById('entregaTipo').innerText =
+      entrega === 'olx' ? 'Entrega com garantia pela OLX' : 'Retirada com vendedor';
+
+    document.getElementById('valorEntrega').innerText =
+      entrega === 'olx' ? 'R$ 50,00' : 'Grátis';
+  }
+
+  if (endereco) {
+    const nome = endereco.nome || '';
+    const rua = endereco.rua || '';
+    const numero = endereco.numero || '';
+    const complemento = endereco.complemento ? ' - ' + endereco.complemento : '';
+    const bairro = endereco.bairro || '';
+    const cidade = endereco.cidade || '';
+    const estado = endereco.estado || '';
+    const cep = endereco.cep || '';
+
+    document.getElementById('enderecoEntrega').innerText =
+      `${nome} - ${rua}, ${numero}${complemento}, ${bairro}, ${cidade} - ${estado}, CEP: ${cep}`;
+  }
+</script>
+
+</body>
+</html>

